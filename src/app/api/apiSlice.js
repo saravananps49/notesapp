@@ -2,15 +2,16 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { setCredentials } from '../../features/auth/authSlice'
 
 const baseQuery = fetchBaseQuery({
-    baseUrl: 'https://technotes-api.onrender.com',
+    // baseUrl: 'https://technotes-api.onrender.com',
+    baseUrl: 'https://notesapp-api-4goi.onrender.com',
     credentials: 'include',
-    prepareHeaders: (Headers, { getState }) => {
+    prepareHeaders: (headers, { getState }) => {
         const token = getState().auth.token
 
         if (token) {
-            Headers.set("authorization", `Bearer ${token}`)
+            headers.set("authorization", `Bearer ${token}`)
         }
-        return Headers
+        return headers
     }
 })
 
